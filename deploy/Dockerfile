@@ -12,7 +12,7 @@ WORKDIR /root
 COPY scripts scripts
 COPY deploy/install install
 
-RUN apt update && apt install curl -y
+RUN apt update && apt install curl xz-utils vim -y
 RUN run-parts install && rm -rf install
 RUN npm install -g heic-cli
 
