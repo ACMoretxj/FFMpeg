@@ -16,4 +16,4 @@ rm ${NODE_BINARY_DEST}
 
 ln -sf ${NODE_HOME}/bin/node /usr/bin/node
 ln -sf ${NODE_HOME}/bin/npm /usr/bin/npm
-ln -sf ${NODE_HOME}/bin/npm /usr/bin/npx
+ln -sf ${NODE_HOME}/bin/npx /usr/bin/npx

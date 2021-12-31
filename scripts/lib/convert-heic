@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+echo -e "\tConverting $1 ..."
+npx heic-cli < "$1" > "$2"

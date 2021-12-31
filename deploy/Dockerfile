@@ -4,7 +4,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 ENV LANG=en_US.UTF-8
 ENV TERM=xterm-color
-ENV PATH=$PATH:/root/scripts
+ENV PATH=$PATH:/root/scripts/lib
 
 USER root
 WORKDIR /root
@@ -12,7 +12,7 @@ WORKDIR /root
 COPY scripts scripts
 COPY deploy/install install
 
-RUN apt update && apt install curl -y
+RUN apt update && apt install curl xz-utils vim -y
 RUN run-parts install && rm -rf install
 RUN npm install -g heic-cli
 
