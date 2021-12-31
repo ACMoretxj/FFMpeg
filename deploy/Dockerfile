@@ -4,7 +4,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 ENV LANG=en_US.UTF-8
 ENV TERM=xterm-color
-ENV PATH=$PATH:/root/scripts
+ENV PATH=$PATH:/root/scripts/lib
 
 USER root
 WORKDIR /root

@@ -1,0 +1,78 @@
+#!/usr/bin/env bash
+
+ROOT_FOLDER="${HOME}/share"
+# Set line-ending character as separator, or the file with
+# whitespace in its name will be incorrectly handled
+IFS=$'\n'
+
+process_heic() {
+    local pictures=$(find ${ROOT_FOLDER} -type f -iname "*.HEIC")
+    local num_total=$(echo -e "${pictures}" | wc -l)
+    local num_current="0"
+    
+    for heic_picture in ${pictures}; do
+        num_current="$((${num_current} + 1))"
+        jpg_picture=$(echo ${heic_picture} | sed "s/HEIC/JPG/ig")
+        
+        echo -e "[CONVERT HEIC] Processing ${num_current} / ${num_total}: ${heic_picture} ..."
+        
+        convert_heic "${heic_picture}" "${jpg_picture}"
+        compress_picture "${jpg_picture}"
+        
+        # Remove origin pictures
+        rm -f "${heic_picture}"
+    done
+}
+
+process_mov() {
+    local videos=$(find ${ROOT_FOLDER} -type f -iname "*.MOV")
+    local num_total=$(echo -e "${videos}" | wc -l)
+    local num_current="0"
+    
+    for mov_video in ${videos}; do
+        num_current="$((${num_current} + 1))"
+        mp4_video=$(echo ${mov_video} | sed "s/MOV/MP4/ig")
+        
+        echo -e "[CONVERT MOV] Processing ${num_current} / ${num_total}: ${mov_video} ..."
+        
+        convert_mov "${mov_video}" "${mp4_video}"
+        
+        # Remove origin videos
+        rm -f "${mov_video}"
+    done
+}
+
+resize_pictures() {
+    local pictures=$(find ${ROOT_FOLDER} -type f -size +1M \
+        -iname "*.JPG" -o -iname "*.PNG" -o -iname "*.JPEG" -o -iname "*.CR2")
+    local num_total=$(echo -e "${pictures}" | wc -l)
+    local num_current="0"
+    
+    for picture in ${pictures}; do
+        num_current="$((${num_current} + 1))"
+        
+        echo -e "[RESIZE PICTURE] Processing ${num_current} / ${num_total}: ${picture} ..."
+        
+        compress_picture "${picture}"
+    done
+}
+
+resize_videos() {
+    local videos=$(find ${ROOT_FOLDER} -type f -size +1M \
+        -iname "*.MP4" -o -iname "*.AVI" -o -iname "*.MKV" -o -iname "*.MTS")
+    local num_total=$(echo -e "${videos}" | wc -l)
+    local num_current="0"
+    
+    for video in ${videos}; do
+        num_current="$((${num_current} + 1))"
+        
+        echo -e "[RESIZE VIDEOS] Processing ${num_current} / ${num_total}: ${video} ..."
+        
+        compress_video "${video}"
+    done
+}
+
+process_heic
+process_mov
+resize_pictures
+resize_videos

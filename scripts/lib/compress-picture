@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+echo -e "\tCompressing $1 ..."
+ffmpeg -y -loglevel quiet -i "$1" -q:v 10 "$1"
