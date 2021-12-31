@@ -1,0 +1,43 @@
+name: Package Docker Images
+
+on:
+  release:
+    types: [published]
+
+jobs:
+
+  package:
+    name: Package Docker Images
+    runs-on: ubuntu-20.04
+    env:
+      DOCKERHUB_REPO: rucer/ffmpeg
+      IMAGE_DESCRIPTION: Personal customization of ffmpeg and related scripts
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Login Docker Hub
+        uses: azure/docker-login@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+
+      - name: Build and Push
+        uses: docker/build-push-action@v2
+        with:
+          file: deploy/Dockerfile
+          context: .
+          push: true
+          tags: |
+            ${{ env.DOCKERHUB_REPO }}:${{ github.event.release.tag_name }}
+            ${{ env.DOCKERHUB_REPO }}:latest
+
+      - name: Update Docker Hub Description
+        uses: peter-evans/dockerhub-description@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: ${{ env.DOCKERHUB_REPO }}
+          short-description: ${{ env.IMAGE_DESCRIPTION }}
+          readme-filepath: README.md
