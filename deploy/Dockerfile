@@ -9,7 +9,9 @@ ENV TERM=xterm-color
 USER root
 WORKDIR /root
 
+COPY scripts scripts
 COPY deploy/install install
 RUN apt update && run-parts $PWD/install
+RUN npm install -g heic-cli
 
-COPY scripts scripts
+ENTRYPOINT ["ffmpeg"]
