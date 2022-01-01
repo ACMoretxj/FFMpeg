@@ -16,8 +16,8 @@ process_heic() {
         
         echo -e "[CONVERT HEIC] Processing ${num_current} / ${num_total}: ${heic_picture} ..."
         
-        convert_heic "${heic_picture}" "${jpg_picture}"
-        compress_picture "${jpg_picture}"
+        convert-heic "${heic_picture}" "${jpg_picture}"
+        compress-picture "${jpg_picture}"
         
         # Remove origin pictures
         rm -f "${heic_picture}"
@@ -35,7 +35,7 @@ process_mov() {
         
         echo -e "[CONVERT MOV] Processing ${num_current} / ${num_total}: ${mov_video} ..."
         
-        convert_mov "${mov_video}" "${mp4_video}"
+        convert-mov "${mov_video}" "${mp4_video}"
         
         # Remove origin videos
         rm -f "${mov_video}"
@@ -53,7 +53,7 @@ resize_pictures() {
         
         echo -e "[RESIZE PICTURE] Processing ${num_current} / ${num_total}: ${picture} ..."
         
-        compress_picture "${picture}"
+        compress-picture "${picture}"
     done
 }
 
@@ -68,7 +68,7 @@ resize_videos() {
         
         echo -e "[RESIZE VIDEOS] Processing ${num_current} / ${num_total}: ${video} ..."
         
-        compress_video "${video}"
+        compress-video "${video}"
     done
 }
 
