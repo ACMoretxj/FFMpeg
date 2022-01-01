@@ -1,6 +1,6 @@
 # FFMpeg
 
-Personal customization of ffmpeg and related scripts.
+Personal customization of ffmpeg and related scripts. You can find the built image in [DockerHub](https://hub.docker.com/r/rucer/ffmpeg).
 
 ## Components
 
