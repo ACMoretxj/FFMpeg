@@ -17,4 +17,5 @@ RUN apt update && apt install curl xz-utils vim -y
 RUN run-parts install && rm -rf install
 RUN npm install -g heic-cli
 
-ENTRYPOINT ["ffmpeg"]
+ENTRYPOINT ["/boot/entrypoint.sh"]
+CMD ["ffmpeg"]
