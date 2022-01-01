@@ -10,6 +10,7 @@ USER root
 WORKDIR /root
 
 COPY scripts scripts
+COPY deploy/boot /boot
 COPY deploy/install install
 
 RUN apt update && apt install curl xz-utils vim -y
