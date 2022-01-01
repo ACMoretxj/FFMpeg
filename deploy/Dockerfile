@@ -22,7 +22,7 @@ COPY --from=build /opt/node /opt/node
 COPY scripts scripts
 COPY deploy/boot /boot
 
-RUN apt update && apt install vim -y
+RUN apt update && apt install vim-tiny -y
 
 ENTRYPOINT ["/boot/entrypoint.sh"]
 CMD ["ffmpeg"]
