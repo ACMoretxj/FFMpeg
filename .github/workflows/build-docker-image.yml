@@ -1,4 +1,4 @@
-name: Package Docker Images
+name: Build Docker Images
 
 on:
   release:
@@ -7,7 +7,7 @@ on:
 jobs:
 
   package:
-    name: Package Docker Images
+    name: Build Docker Image
     runs-on: ubuntu-20.04
     env:
       DOCKERHUB_REPO: rucer/ffmpeg
