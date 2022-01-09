@@ -1,0 +1,40 @@
+name-template: '$RESOLVED_VERSION'
+tag-template: '$RESOLVED_VERSION'
+change-template: '- $TITLE (#$NUMBER)'
+categories:
+  - title: '🚀 Features'
+    labels:
+      - 'Generation'
+      - 'Milestone'
+      - 'Feature'
+      - 'Security'
+  - title: '🐛 Bug Fixes'
+    labels:
+      - 'Fix'
+      - 'Bug'
+  - title: '🧰 Maintenance'
+    labels:
+      - 'Enhance'
+      - 'Upgrade'
+      - 'Document'
+version-resolver:
+  major:
+    labels:
+      - 'Generation'
+  minor:
+    labels:
+      - 'Milestone'
+  patch:
+    labels:
+      - 'Feature'
+      - 'Security'
+      - 'Fix'
+      - 'Bug'
+      - 'Enhance'
+      - 'Upgrade'
+      - 'Document'
+  default: patch
+template: |
+  ## Changes
+
+  $CHANGES
