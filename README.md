@@ -4,8 +4,9 @@ Personal customization of ffmpeg and related scripts. You can find the built ima
 
 ## Components
 
-* [heic-cli](https://www.npmjs.com/package/heic-cli): Convert HEIC pictures to JPEG format, need to run with Node runtime
 * [ffmpeg](http://ffmpeg.org/): A complete, cross-platform solution to record, convert and stream audio and video
+* [heic-cli](https://www.npmjs.com/package/heic-cli): Convert HEIC pictures to JPEG format, need to run with Node runtime
+* [lux](https://github.com/iawia002/lux): Fast and simple video download library and CLI tool
 
 ## Run Image
 
