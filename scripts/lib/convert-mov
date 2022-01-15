@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 
+set -e -u
+
 echo -e "\tConverting $1 ..."
 ffmpeg -y -loglevel quiet -i "$1" -q:v 0 "$2"

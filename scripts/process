@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e -u
+
 ROOT_FOLDER="${HOME}/share"
 # Set line-ending character as separator, or the file with
 # whitespace in its name will be incorrectly handled

@@ -1,10 +1,10 @@
 FROM jrottenberg/ffmpeg:4.4.1-ubuntu2004
 
-ARG DEBIAN_FRONTEND=noninteractive
+ARG DEBIAN_FRONTEND="noninteractive"
 
-ENV LANG=en_US.UTF-8
-ENV TERM=xterm-color
-ENV PATH=$PATH:/root/scripts/lib
+ENV LANG="en_US.UTF-8"
+ENV TERM="xterm-color"
+ENV PATH="$PATH:/root/scripts/lib"
 
 USER root
 WORKDIR /root
